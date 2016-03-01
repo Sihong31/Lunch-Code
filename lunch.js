@@ -48,20 +48,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var shuffledChoices;
 
 	function initialize() {
-		removeListItem();
 		chooseRestaurantList();
 		shuffleRestaurants(choice);
 		displayResult(shuffledChoices);
 	};
 
 	function onClickHandler() {
+
 		var initializeButton = document.getElementById("initialize");
 		initializeButton.addEventListener("click", function(event) {
 			var existingResult = document.getElementById("result");
 			existingResult.innerHTML = "";
+			removeListItem();
 			initialize();
 		});
+
+		var resetButton = document.getElementById("reset");
+		resetButton.addEventListener("click", function(event){
+			pageReload();
+		});
+
 	};
+
+	function pageReload() {
+		document.location.reload(true);
+	}
 
 	function removeListItem() {
 		var parentNode = document.getElementById("display-list");
@@ -100,10 +111,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			alert("That is an incorrect choice, please try again");
 		}
 		return choice;
-	};
-
-	function removeRestaurants() {
-
 	};
 
 	function shuffleRestaurants(data) {
