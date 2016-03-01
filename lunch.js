@@ -2,25 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-
-	// var healthyRestaurantsArray = [
-	// 	"Chop't",
-	// 	"Chipotle",
-	// 	"Water Street Deli",
-	// 	"Open Kitchen",
-	// 	"GuacStar", 
-	// ]
-
-	// var unhealthyRestaurantsArray = [
-	// 	"Thai (Bao Restaurant)",
-	// 	"Chinese Buffet",
-	// 	"Sushi",
-	// 	"Schnippers", 
-	// 	"Jamaican", 
-	// 	"Lenny's", 
-	// 	"Burger King",
-	// ]
-
 	var healthyRestaurantsData = [
 		{
 			"restaurantName":"Chop't"
@@ -66,10 +47,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var choice;
 	var shuffledChoices;
 
+
 	function initialize() {
 		chooseRestaurantList();
 		shuffleRestaurants(choice);
 		decideLunch(shuffledChoices);
+	}
+
+	function clickHandler() {
+		var initializeButton = document.getElementById("initialize");
+		initializeButton.addEventListener("click", function(event) {
+			console.log("hello")
+			// event.preventDefault();
+			initialize();
+		})
 	}
 
 	function displayData(data) {
@@ -88,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	};
 
 	function chooseRestaurantList() {
-		choice = prompt("Enter 1 for healthy choices, 2 for unhealthy choices");
+		choice = document.getElementById("selection-box").value;
 		if (choice == 1) {
 			choice = healthyRestaurantsData;
 			displayData(choice);
@@ -134,6 +125,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		document.getElementById("result").appendChild(p);
 	}
 
-	initialize();
-
+	clickHandler();
+	
 });
