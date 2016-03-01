@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var shuffledChoices;
 
 	function initialize() {
+		removeListItem();
 		chooseRestaurantList();
 		shuffleRestaurants(choice);
 		displayResult(shuffledChoices);
@@ -59,20 +60,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			var existingResult = document.getElementById("result");
 			existingResult.innerHTML = "";
 			initialize();
-			event.preventDefault();
 		});
 	};
+
+	function removeListItem() {
+		var parentNode = document.getElementById("display-list");
+		while (parentNode.firstChild) {
+	    parentNode.removeChild(parentNode.firstChild);
+		};
+	}
 
 	function displayRestaurantList(data) {
 
 		var headline = document.getElementById("headline");
 		headline.innerHTML = "This is your restaurant list:";
+
 		for (var i = 0; i < data.length; i++) {
       if ( data[i].hasOwnProperty("restaurantName") ) {
-	      var display = document.getElementsByClassName("display")[0];
-				var p = document.createElement('p');
-				display.appendChild(p);
-				document.getElementsByTagName("p")[i].innerHTML = i + 1 + ". " + data[i].restaurantName;
+	      var displayList = document.getElementById("display-list");
+				var listItem = document.createElement('li');
+				displayList.appendChild(listItem);
+				document.getElementsByTagName("li")[i].innerHTML = data[i].restaurantName;
        }
     }
 
@@ -91,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		else {
 			alert("That is an incorrect choice, please try again");
 		}
-
 		return choice;
 	};
 
