@@ -47,23 +47,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var choice;
 	var shuffledChoices;
 
-
 	function initialize() {
 		chooseRestaurantList();
 		shuffleRestaurants(choice);
-		decideLunch(shuffledChoices);
-	}
+		displayResult(shuffledChoices);
+	};
 
-	function clickHandler() {
+	function onClickHandler() {
 		var initializeButton = document.getElementById("initialize");
 		initializeButton.addEventListener("click", function(event) {
-			console.log("hello")
-			// event.preventDefault();
+			var existingResult = document.getElementById("result");
+			existingResult.innerHTML = "";
 			initialize();
-		})
-	}
+			event.preventDefault();
+		});
+	};
 
-	function displayData(data) {
+	function displayRestaurantList(data) {
 
 		var headline = document.getElementById("headline");
 		headline.innerHTML = "This is your restaurant list:";
@@ -82,18 +82,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		choice = document.getElementById("selection-box").value;
 		if (choice == 1) {
 			choice = healthyRestaurantsData;
-			displayData(choice);
+			displayRestaurantList(choice);
 		}
 		else if( choice == 2) {
 			choice = unhealthyRestaurantsData;
-			displayData(choice);
+			displayRestaurantList(choice);
 		}
 		else {
 			alert("That is an incorrect choice, please try again");
 		}
 
 		return choice;
-	}
+	};
 
 	function removeRestaurants() {
 
@@ -116,15 +116,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  return shuffledChoices;
 	};
 
-	function decideLunch(shuffledChoices) {
+	function displayResult(shuffledChoices) {
 		var lunchResult = shuffledChoices.pop();
 		var p = document.createElement("p");
 		p.style.fontSize="30px";
 		p.style.textAlign="center";
 		p.innerHTML = "Your result is: " + lunchResult.restaurantName;
 		document.getElementById("result").appendChild(p);
-	}
+	};
 
-	clickHandler();
-	
+	onClickHandler();
+
 });
