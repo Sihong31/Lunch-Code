@@ -1,47 +1,68 @@
 //Lunch Roulette
 
+//TODO, enter locations for restaurants, work on displaying locations,
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
 	var healthyRestaurantsData = [
 		{
-			"restaurantName":"Chop't"
+			"restaurantName":"Chop't",
+			"restaurantLocation":"1 New York Plaza New York, NY 10004",
+			"phoneNumber":"646-741-9968"
 		},
 		{
-			"restaurantName":"Chipotle"
+			"restaurantName":"Chipotle",
+			"restaurantLocation": "1 New York Plaza New York, NY 10004",
+			"phoneNumber": "646-882-3252"
 		},		
 		{
-			"restaurantName":"Water Street Deli"
+			"restaurantName":"Water Street Deli",
+			"restaurantLocation": "130 Water St New York, NY 10005",
+			"phoneNumber": "212-785-1320"
+		},	
+		{
+			"restaurantName":"Open Kitchen",
+			"restaurantLocation": "15 William St, New York, NY 10005",
+			"phoneNumber": "212-785-5555"
 		},		
 		{
-			"restaurantName":"Open Kitchen"
-		},		
-		{
-			"restaurantName":"GuacStar"
+			"restaurantName":"GuacStar",
+			"restaurantLocation": "66 Pearl St, New York, NY 10004",
+			"phoneNumber": "212-425-7171"
 		}
 	]
 
 	var unhealthyRestaurantsData = [
 		{
-			"restaurantName":"Thai (Bao Restaurant)"
+			"restaurantName":"Thai OBAO",
+			"restaurantLocation": "38 Water St New York, NY 10004",
+			"phoneNumber": "212-361-6311"
 		},		
 		{
-			"restaurantName":"Chinese Buffet"
+			"restaurantName":"Golden Chopsticks",
+			"restaurantLocation": "77 Pearl St #3, New York, NY 10004",
+			"phoneNumber": "212-825-0314"
 		},		
 		{
-			"restaurantName":"Sushi"
+			"restaurantName":"Nu Sushi",
+			"restaurantLocation": "76 Pearl St New York, NY 10004",
+			"phoneNumber":"212-363-1668"
 		},		
 		{
-			"restaurantName":"Schnippers"
+			"restaurantName":"Schnippers",
+			"restaurantLocation": "1 New York Plaza New York, NY 10004",
+			"phoneNumber": "646-964-5409"
 		},		
 		{
-			"restaurantName":"Jamaican"
+			"restaurantName":"Veronica's Kitchen",
+			"restaurantLocation": "Front St & Pine St New York, NY 10005",
+			"phoneNumber": "917-848-2465"
 		},		
 		{
-			"restaurantName":"Lenny's"
-		},		
-		{
-			"restaurantName":"Burger King"
-		}
+			"restaurantName":"Lenny's",
+			"restaurantLocation": "32 Water St New York, NY 10004",
+			"phoneNumber": "212-785-7500"
+		}	
 	]
 
 	var choice;
@@ -130,13 +151,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  return shuffledChoices;
 	};
 
+	function createHeadline (elementTag, description, dataObj) {
+		var headline = document.createElement(elementTag);
+		headline.style.fontSize="20px";
+		headline.style.textAlign="center";
+		headline.innerHTML = description + dataObj;
+		document.getElementById("result").appendChild(headline);
+	}
+
 	function displayResult(shuffledChoices) {
 		var lunchResult = shuffledChoices.pop();
-		var p = document.createElement("p");
-		p.style.fontSize="30px";
-		p.style.textAlign="center";
-		p.innerHTML = "Your result is: " + lunchResult.restaurantName;
-		document.getElementById("result").appendChild(p);
+		createHeadline("h2","Your result is: ", lunchResult.restaurantName);
+		createHeadline("p","Restaurant location: ", lunchResult.restaurantLocation);
+		createHeadline("p","Phone Number: ", lunchResult.phoneNumber);
 	};
 
 	onClickHandler();
