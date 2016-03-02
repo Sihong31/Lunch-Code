@@ -108,13 +108,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		headline.innerHTML = "This is your restaurant list:";
 
 		for (var i = 0; i < data.length; i++) {
-      if ( data[i].hasOwnProperty("restaurantName") ) {
-	      var displayList = document.getElementById("display-list");
+      			if ( data[i].hasOwnProperty("restaurantName") ) {
+	      		var displayList = document.getElementById("display-list");
 				var listItem = document.createElement('li');
 				displayList.appendChild(listItem);
 				document.getElementsByTagName("li")[i].innerHTML = data[i].restaurantName;
-       }
-    }
+       			}
+    		}
 
 	};
 
