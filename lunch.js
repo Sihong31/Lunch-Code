@@ -68,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var choice;
 	var shuffledChoices;
 
+	//CONTROLLER
+
 	function initialize() {
 		chooseRestaurantList();
 		shuffleRestaurants(choice);
@@ -102,21 +104,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		};
 	}
 
-	function displayRestaurantList(data) {
-
-		var headline = document.getElementById("headline");
-		headline.innerHTML = "This is your restaurant list:";
-
-		for (var i = 0; i < data.length; i++) {
-      if ( data[i].hasOwnProperty("restaurantName") ) {
-	      var displayList = document.getElementById("display-list");
-				var listItem = document.createElement('li');
-				displayList.appendChild(listItem);
-				document.getElementsByTagName("li")[i].innerHTML = data[i].restaurantName;
-       }
-    }
-
-	};
+	function acquireDay() {
+		var day = new Date();
+		//getDay() 0 to 6 => Sunday to Saturday
+		var newDay = day.getDay();
+		return newDay;
+	}
 
 	function chooseRestaurantList() {
 		choice = document.getElementById("selection-box").value;
@@ -149,6 +142,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	  shuffledChoices = data;
 	  return shuffledChoices;
+	};
+
+	//VIEW
+
+	function displayRestaurantList(data) {
+
+		var headline = document.getElementById("headline");
+		headline.innerHTML = "This is your restaurant list:";
+
+		for (var i = 0; i < data.length; i++) {
+      if ( data[i].hasOwnProperty("restaurantName") ) {
+	      var displayList = document.getElementById("display-list");
+				var listItem = document.createElement('li');
+				displayList.appendChild(listItem);
+				document.getElementsByTagName("li")[i].innerHTML = data[i].restaurantName;
+       }
+    }
+
 	};
 
 	function createHeadline (elementTag, description, dataObj) {
