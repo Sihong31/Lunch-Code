@@ -104,6 +104,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		};
 	}
 
+	function acquireDay() {
+		var day = new Date();
+		//getDay() 0 to 6 => Sunday to Saturday
+		var newDay = day.getDay();
+		return newDay;
+	}
+	
 	function displayRestaurantList(data) {
 
 		var headline = document.getElementById("headline");
