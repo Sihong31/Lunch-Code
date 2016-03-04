@@ -65,11 +65,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}	
 	]
 
+	var wednesdayRestaurants = [
+		{
+			"restaurantName":"Diso Truck",
+			"restaurantLocation": "Old Slip Park",
+			"phoneNumber": "917-756-4145"
+		}
+	]
+
+
 	var choice;
 	var shuffledChoices;
 
 	//CONTROLLER
-
+	Array.prototype.pushArray = function() {
+	    this.push.apply(this, this.concat.apply([], arguments));
+	};
+	
 	function initialize() {
 		chooseRestaurantList();
 		shuffleRestaurants(choice);
@@ -110,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		var newDay = day.getDay();
 		return newDay;
 	}
-	
+
 	function displayRestaurantList(data) {
 
 		var headline = document.getElementById("headline");
