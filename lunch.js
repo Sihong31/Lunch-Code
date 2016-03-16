@@ -24,12 +24,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			"restaurantName":"Open Kitchen",
 			"restaurantLocation": "15 William St, New York, NY 10005",
 			"phoneNumber": "212-785-5555"
+		},
+		{
+			"restaurantName":"Nu Sushi",
+			"restaurantLocation": "76 Pearl St New York, NY 10004",
+			"phoneNumber":"212-363-1668"
 		},		
 		{
 			"restaurantName":"GuacStar",
 			"restaurantLocation": "66 Pearl St, New York, NY 10004",
 			"phoneNumber": "212-425-7171"
+		},		
+		{
+			"restaurantName":"Niko Niko",
+			"restaurantLocation": "133 John St, New York, NY 10005",
+			"phoneNumber": "212-232-0152"
 		}
+
 	]
 
 	var unhealthyRestaurantsData = [
@@ -42,12 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			"restaurantName":"Golden Chopsticks",
 			"restaurantLocation": "77 Pearl St #3, New York, NY 10004",
 			"phoneNumber": "212-825-0314"
-		},		
-		{
-			"restaurantName":"Nu Sushi",
-			"restaurantLocation": "76 Pearl St New York, NY 10004",
-			"phoneNumber":"212-363-1668"
-		},		
+		},				
 		{
 			"restaurantName":"Schnippers",
 			"restaurantLocation": "1 New York Plaza New York, NY 10004",
@@ -62,7 +68,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			"restaurantName":"Lenny's",
 			"restaurantLocation": "32 Water St New York, NY 10004",
 			"phoneNumber": "212-785-7500"
-		}	
+		},		
+		{
+			"restaurantName":"BonChon Chicken",
+			"restaurantLocation": "104 John St, New York, NY 10038",
+			"phoneNumber": "646-692-4660"
+		}
+
 	]
 
 	var wednesdayRestaurants = [
@@ -145,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			choice = healthyConditionalRestaurants();
 			displayRestaurantList(choice);
 		}
-		else if( choice == 2) {
+		else if (choice == 2) {
 			choice = unhealthyConditionalRestaurants();
 			displayRestaurantList(choice);
 		}
